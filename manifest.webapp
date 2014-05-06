@@ -1,0 +1,46 @@
+{
+    "name": "PicUp",
+    "version": "1.1",
+    "type": "privileged",
+    "description": "Free Image Hosting Platform for FirefoxOS and Diaspora* users.",
+    "launch_path": "/index.html",
+    
+    "origin": "app://picup.it",
+     "activities": {
+        "share": {
+      "href": "./share-activity.html",
+      "disposition": "window",
+      "filters": {
+        "type": ["image/*","image/jpeg","image/png"]
+      },
+      "returnValue": true
+    },
+    "pick": {
+      "href": "./pick-activity.html",
+      "disposition": "inline",
+      "filters": {
+        "type": ["image/*","image/jpeg","image/png"]
+      },
+      "returnValue": true
+    }
+  },
+    "permissions": {
+          "systemXHR": {
+        "description": "To connect with the PicUp server."
+    },
+    
+
+    "redirects": [
+  {"from": "https://picupt.it/mobile/data/",
+    "to": "/redirects/redirect.html"}
+]
+        },
+    "developer": {
+        "name": "appocaliptic.com",
+        "url": "https://appocaliptic.com"
+        },
+        "icons": {
+        "60": "/img/icon-60.png",
+        "128": "/img/icon-128.png"
+        }}
+

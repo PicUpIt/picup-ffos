@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>PicUp.IT</title>
+  <!-- Building blocks -->
+  <link rel="stylesheet" href="style/action_menu.css">
+  <link rel="stylesheet" href="style/buttons.css">
+  <link rel="stylesheet" href="style/confirm.css">
+  <link rel="stylesheet" href="style/edit_mode.css">
+  <link rel="stylesheet" href="style/headers.css">
+  <link rel="stylesheet" href="style/input_areas.css">
+  <link rel="stylesheet" href="style/status.css">
+  <link rel="stylesheet" href="style/switches.css">
+  <link rel="stylesheet" href="style/drawer.css">
+  <link rel="stylesheet" href="style/lists.css">
+  <link rel="stylesheet" href="style/progress_activity.css">
+  <link rel="stylesheet" href="style/scrolling.css">
+  <link rel="stylesheet" href="style/seekbars.css">
+  <link rel="stylesheet" href="style/tabs.css">
+  <link rel="stylesheet" href="style/toolbars.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="icons/styles/action_icons.css">
+  <link rel="stylesheet" href="icons/styles/media_icons.css">
+  <link rel="stylesheet" href="icons/styles/comms_icons.css">
+  <link rel="stylesheet" href="icons/styles/settings_icons.css">
+  <!-- Transitions -->
+  <link rel="stylesheet" href="transitions.css">
+  <!-- Util CSS: some extra tricks -->
+  <link rel="stylesheet" href="util.css">
+  <link rel="stylesheet" href="fonts.css">
+  <!-- Additional markup to make Building Blocks kind of cross browser -->
+  <link rel="stylesheet" href="cross_browser.css">
+  <style>
+li.picupImage { margin: 0 0px; display: inline; }
+ul {
+    overflow:scroll;
+    height:18em;
+    
+};
+</style>
+</meta>
+
+<body>
+  <section role="region" id="picup-menu" class=" skin-dark">
+   <header>
+    <menu type="toolbar">
+      <span id="picupLogin">
+       <button id="login"><span class="icon settings-icon persona">user</span></button>
+     </span>
+     <span id="picupDeerBox" style="display:none">
+      <button id="deerbox"> <span class="icon icon-user">user</span></button>
+      <button id="pick"><span class="icon media-icon camera">camera</span></button>
+    </span>
+  </menu>
+  <button id="homepage"><span class="icon icon-menu">menu</span></button>
+
+  <h1>PicUp.It</h1>
+</header>
+<center>
+
+  <span id="idGalleryView" style="display:none" >
+    <header>
+      <h2 id="idGalleryTitle">description</h2>
+    </header>
+    <article class=" scrollable " style="overflow: auto; overflow-x: scroll;overflow-y: scroll;">
+      <section data-type="list">
+        <ul id="picupGalleryPictures">
+        </ul>
+      </section>
+    </article>
+<!--     <header>
+      <h2 id="idGalleryAuthor">description</h2>
+    </header> -->
+  </span>
+
+  <span id="idPictureView" style="display:none">
+    <header>
+      <h2 id="idPicupDescription">Gallery Title</h2>
+    </header>
+    <img  id="picupPicture" src="" width="95%"/>
+  </span>
+
+
+  <br/>
+
+  <div id="idHomePageView">
+    <div id="picupGalleries">
+      <button class="recommend">More galleries</button>
+    </div>
+    <div id="picupUsers">
+      <button class="recommend">More users</button>
+    </div>
+    <div id="image-presenter" style="display:none">
+      <img src="" id="imageSelected" style="max-width:100%;max-height:100%" />
+    </div>
+
+  </div>
+</center>
+
+<div id="image-presenter"></div>
+</section>
+<section role="region" id="picup-actions" class="activeg">
+  <button id="listpicture" data-l10n-id="get-picture">Pick image</button>
+  <button id="getpicture" data-l10n-id="getpicture">Get image</button>
+
+</section>
+<div id="toolbarPicture" role="toolbar" style="display:none">
+   <ul>
+    <li><button id="showGallery" class="action-icon browser-back">Back</button></li>
+  </ul> 
+  <ul>
+Here we need to put share to email - just URL :)
+
+  <!--      <li><button id="sharePicture" class="action-icon email-share">Share</button></li>
+ <li><button class="action-icon email-markread">Mark read</button></li>
+    <li><button class="action-icon move">Move</button></li> -->
+  </ul>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/picup.js"></script>
+<script type="text/javascript" src="js/homepage.js"></script>
+<script type="text/javascript" src="js/myapp.js"></script>
+
+<script type="text/javascript" src="js/include.js"></script>
+</body>
+</html>  
