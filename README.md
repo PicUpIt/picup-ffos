@@ -9,7 +9,7 @@ A mobile FirefoxOS application for [PicUp It](https://picup.it) platform.
 
 #### Implemented
 
-* Authentication with Persona / PicUp.It
+* Authentication with Mozilla Persona / PicUp.It
 * Fetching galleries and users
 * Showing picture from PicUp
 * Pick image from other activites
