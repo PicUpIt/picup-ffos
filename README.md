@@ -13,10 +13,14 @@ A mobile FirefoxOS application for [PicUp It](https://picup.it) platform.
 * Fetching galleries and users
 * Showing picture from PicUp
 * Pick image from other activites
+* Picture's upload 
 
 #### Roadmap
 
- * Picture upload (80% done)
+* Picture's upload directly to a the gallery
+* Handling share activity
+* Better navigation
+* DeerBox
 
 ### bugs
 
