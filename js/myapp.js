@@ -4,6 +4,7 @@
      * https://picup.it/
      * author: bluszcz@bluszcz.net
      */
+
     var db;
     /*
      * Initialization of the indexedDB
@@ -48,12 +49,17 @@
         var pick = new MozActivity({
             name: "pick",
             data: {
-                type: ["image/jpeg", "image/png", "image/jpg"]
+                type: ["image/jpeg", "image/png", "image/jpg"],
+                appname: "camera"
             }
         });
         pick.onsuccess = function() {
             // Pick the returned image blob and upload to picup
             //var img = document.createElement("img");
+            hideAll();
+            hideHomeGalleries();
+            $('#uploadPageView').show();
+
             var img = document.querySelector("#imageSelected")
             img.src = window.URL.createObjectURL(this.result.blob);
             // Present that image in your app, so it looks cool.
@@ -63,21 +69,25 @@
             //imagePresenter.appendChild(img);
             //console.log(imagePresenter);
             //alert(imagePresenter);
-            hideHomeGalleries();
+            
             // Check connection before upload.
             var connection = window.navigator.mozConnection;
             if (connection.bandwidth === 0) {
                 alert("Please connect to the internet to upload images to PicUp.It");
                 return;
             }
-            document.querySelector("#upload").classList.remove("hidden");
+            //document.querySelector("#upload").classList.remove("hidden");
             if (checkIfAppIsAuthorized()) {
                 //var username = data.config.username;
-                console.log("Changing label to " + username);
-                document.querySelector("#username").innerHTML = username;
-                document.querySelector("#upload_user").classList.remove("hidden");
+
+                console.log("Changing label to " + credentialsGlobal['email']);
+                //document.querySelector("#username").innerHTML = username;
+                //document.querySelector("#upload_user").classList.remove("hidden");
             }
             currentImage = this.result.blob;
+            console.log("Stalker / zone but I start to upload");
+
+            picupUpload(currentImage);
         };
         pick.onerror = function() {
             // If an error occurred or the user canceled the activity
@@ -115,6 +125,8 @@
                 console.log("found myValue but empty");
             }
             console.log("Email is " + request.result.myValue);
+            credentialsGlobal['email'] = request.result.myValue;
+            console.log("NOW I LOG YOUR EMAIL " + credentialsGlobal['email']);
         };
     }
     /* 
@@ -134,6 +146,7 @@
                 console.log("found myValue but empty");
             }
             console.log("API is " + request_api.result.myValue);
+            credentialsGlobal['api_key'] = request_api.result.myValue;
         };
     }
     /* 
@@ -237,6 +250,7 @@
         var req;
         insertApiApi(personaResponse);
         insertApiEmail(personaResponse);
+        getApiCredentials();
     };
     // Some experiments
     // try {

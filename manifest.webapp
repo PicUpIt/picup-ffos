@@ -11,7 +11,8 @@
       "href": "./share-activity.html",
       "disposition": "window",
       "filters": {
-        "type": ["image/*","image/jpeg","image/png"]
+        "type": ["image/*","image/jpeg","image/png"],
+        "appname" : "PicUp"
       },
       "returnValue": true
     },

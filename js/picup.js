@@ -5,7 +5,19 @@
  *
  *  credentialsGlobal - to store credentials to avoid calls from indexedDB
  */
-var credentialsGlobal = {};
+var credentialsGlobal = {
+    'email': '',
+    'api_key': ''
+};
+
+function checkIfAppIsAuthorized() {
+    if ((credentialsGlobal['email'] != '') && (credentialsGlobal['api_key'] != '')) return true;
+    else return false;
+}
+/*
+ * stores blob
+ */
+var currentImage;
 /*
  * Hides everything except topbar
  */
@@ -14,6 +26,7 @@ function hideAll() {
     $('#idGalleryView').hide();
     $('#idPictureView').hide();
     $('#toolbarPicture').hide();
+    $('#uploadPageView').hide();
 }
 /*
  * Hides galleries on the homepage
@@ -22,12 +35,14 @@ function hideHomeGalleries() {
     $('#picupGalleries').hide();
     $('#picupUsers').hide();
 }
-/*
- * Draws homepage
+/* 
+* Draws homepage
  * TODO: Actually it only shows, refactor
  */
 function drawHomepage() {
     hideAll();
+        $('#picupGalleries').show();
+    $('#picupUsers').show();
     $('#idHomePageView').show();
 }
 /*
@@ -91,7 +106,7 @@ function drawPicture(picture) {
 /*
  * Draws provided amount of galleries
  */
-function drawGalleries(galleries, amount = 0) {
+function drawGalleries(galleries, amount=0) {
     console.log("drawGalleries");
     $.map(galleries, function(elem, index) {
         console.log(elem);
@@ -212,4 +227,60 @@ function getBrowse() {
         }
     };
     console.log('after onreadystatechange');
+}
+
+function scheduleBanner() {
+  window.setTimeout(function() {
+    document.getElementById("upload-banner").hidden = true;
+  }, 4000);
+}
+
+function showBanner() {
+    console.log("showBanner");
+  document.getElementById("upload-banner").hidden = false;
+  scheduleBanner();
+}
+
+function picupUpload(file) {
+    console.log(picupUpload);
+    console.log(file);
+    var fd = new FormData();
+    fd.append("picture", file); // Append the file
+    //fd.append("type", "file"); // Append the file
+    fd.append("api_key", credentialsGlobal['api_key']);
+    fd.append("email", credentialsGlobal['email']);
+    var url = "https://picup.it/api/upload/";
+    console.log(fd);
+    // Create the XHR (Cross-Domain XHR FTW!!!)
+    //var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest({
+                    mozSystem: true
+    });
+    xhr.open("POST", url); // Boooom!
+    xhr.onload = function() {
+        console.log('// Big win!');
+        // The URL of the image is:
+        console.log(xhr.responseText);
+        var response = JSON.parse(xhr.responseText);
+        console.log(response);
+        showBanner();
+        getPicture(response['data']['id']);
+        // if (response.success) {
+        //    // console.log("image sharing succeeded");
+
+        //     console.log("url", response.data);
+        //     //inCallback(null, response);
+        // } else {
+        //     console.log(response);
+        //     //inCallback(response, null);
+        // }
+    }
+
+    // xhr.onreadystatechange = function() {
+    //   console.log(xhr.status);
+    //                 console.log(xhr.responseText);
+    //                 console.log(xhr.readyState);
+    // }
+
+    xhr.send(fd);
 }
