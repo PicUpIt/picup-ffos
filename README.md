@@ -5,10 +5,14 @@ A mobile FirefoxOS application for [PicUp It](https://picup.it) platform.
 
 **Development branch**
 
-[![PicupShare](https://picup.it/media/pictures/index0.png)](https://picup.it/p/3425/)
+[![PicupShare](https://picup.it/media/pictures/index3.png)](https://picup.it/p/3433/)
+[![PicupShare](https://picup.it/media/pictures/index4.png)](https://picup.it/p/3434/)
+[![PicupShare](https://picup.it/media/pictures/index0.png)](https://picup.it/p/3427/)
 [![PicupShare](https://picup.it/media/pictures/index1.png)](https://picup.it/p/3425/)
-[![PicupShare](https://picup.it/media/pictures/index2.png)](https://picup.it/p/3425/)
-
+[![PicupShare](https://picup.it/media/pictures/index2.png)](https://picup.it/p/3426/)
+[![PicupShare](https://picup.it/media/pictures/index5.png)](https://picup.it/p/3432/)
+[![PicupShare](https://picup.it/media/pictures/index6.png)](https://picup.it/p/3431/)
+[![PicupShare](https://picup.it/media/pictures/index7.png)](https://picup.it/p/3430/)
 ### Features
 
 #### Implemented
